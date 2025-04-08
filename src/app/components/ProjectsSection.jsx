@@ -28,7 +28,7 @@ const projectsData = [
     title: "Demo_ManagementPost",
     description: "",
     image: "/images/projects/5.png",
-    tag: ["All", "Mobile"],
+    tag: ["All", "Web"],
     gitUrl: "https://manager-post.vercel.app/",
     previewUrl: "/",
   },
