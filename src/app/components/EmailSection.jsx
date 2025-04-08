@@ -1,123 +1,144 @@
 "use client";
 import React, { useState } from "react";
-import GithubIcon from "../../../public/github-icon.svg";
-import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
-import Image from "next/image";
+import emailjs from "emailjs-com";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
-    const JSONdata = JSON.stringify(Object.fromEntries(formData));
-    const endpoint = "/api/send";
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: "POST",
-      // Tell the server we're sending JSON.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
+    try {
+      // Send email using the first template
+      const result1 = await emailjs.sendForm(
+        "service_kin6hgf", // Replace with your Service ID
+        "template_wstad1q", // Replace with your first Template ID
+        e.target,
+        "X_oxiKGYanopIjX-0" // Replace with your User ID
+      );
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
+      // Send email using the second template
+      const result2 = await emailjs.sendForm(
+        "service_kin6hgf", // Replace with your Service ID
+        "template_mimfxai", // Replace with your second Template ID
+        e.target,
+        "X_oxiKGYanopIjX-0" // Replace with your User ID
+      );
+      toast.success("Your email has been sent successfully!");
 
-    if (response.status === 200) {
-      console.log("Message sent.");
-      setEmailSubmitted(true);
+      // Reset the form after both requests
+      e.target.reset();
+    } catch (error) {
+      console.error("Failed to send message:", error.text);
+      toast.error("Failed to send your email. Please try again.");
     }
   };
-
   return (
     <section
       id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+      className="grid md:grid-cols-2 my-12 py-24 gap-8 relative bg-gradient-to-b from-gray-900 to-gray-800 px-6 md:px-12 rounded-lg shadow-lg"
     >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
+      <div className="absolute inset-0 bg-gradient-radial from-primary-900 to-transparent blur-3xl opacity-30"></div>
       <div className="z-10">
-        <h5 className="text-2xl font-bold text-white my-4">Contact Me</h5>
-        <p className="text-[#ADB7BE] mb-6 max-w-md">
+        <h5 className="text-3xl font-extrabold text-white mb-6">Contact</h5>
+        <p className="text-gray-400 mb-8 max-w-lg leading-relaxed">
           I am always open to new opportunities. If you have any questions or
           want to discuss, feel free to contact me via email or the social
           platforms below.
         </p>
-        <div className="socials flex flex-row gap-4">
-          <Link href="https://https://github.com/Mpie-T.com">Github</Link>
-          <Link href="https://www.linkedin.com/in/thong-tase-7a4b10347/">
-            LinkedIn
+
+        <div className="socials flex flex-row gap-8">
+          <Link
+            href="https://github.com/Mpie-T.com"
+            className="group flex items-center gap-4 hover:text-blue-500 transition duration-300"
+          >
+            <div className="relative">
+              <img
+                src="/github-color-svgrepo-com.svg"
+                alt="GitHub"
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-blue-500 opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+            </div>
+            <span className="text-lg font-semibold text-white">GitHub</span>
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/thong-tase-7a4b10347/"
+            className="group flex items-center gap-4 hover:text-blue-700 transition duration-300"
+          >
+            <div className="relative">
+              <img
+                src="/linkedin-svgrepo-com.svg"
+                alt="LinkedIn"
+                className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-blue-700 opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300"></div>
+            </div>
+            <span className="text-lg font-semibold text-white">LinkedIn</span>
           </Link>
         </div>
       </div>
-      <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Your email has been successfully sent!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Your Email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="example@gmail.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Example: Project Collaboration"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Leave your message here..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+      <div className="z-10">
+        <form
+          className="flex flex-col bg-gray-800 p-6 rounded-lg shadow-md"
+          onSubmit={handleSubmit}
+        >
+          <div className="mb-6">
+            <label
+              htmlFor="email"
+              className="text-white block mb-2 text-sm font-medium"
             >
-              Send Message
-            </button>
-          </form>
-        )}
+              Your Email
+            </label>
+            <input
+              name="email"
+              type="email"
+              id="email"
+              required
+              className="bg-gray-700 border border-gray-600 placeholder-gray-400 text-gray-100 text-sm rounded-lg block w-full p-3 focus:ring-primary-500 focus:border-primary-500"
+              placeholder="example@gmail.com"
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="subject"
+              className="text-white block text-sm mb-2 font-medium"
+            >
+              Subject
+            </label>
+            <input
+              name="subject"
+              type="text"
+              id="subject"
+              required
+              className="bg-gray-700 border border-gray-600 placeholder-gray-400 text-gray-100 text-sm rounded-lg block w-full p-3 focus:ring-primary-500 focus:border-primary-500"
+              placeholder="Example: Project Collaboration"
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="message"
+              className="text-white block text-sm mb-2 font-medium"
+            >
+              Message
+            </label>
+            <textarea
+              name="message"
+              id="message"
+              className="bg-gray-700 border border-gray-600 placeholder-gray-400 text-gray-100 text-sm rounded-lg block w-full p-3 focus:ring-primary-500 focus:border-primary-500"
+              placeholder="Leave your message here..."
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg w-full transition duration-300"
+          >
+            Send Message
+          </button>
+        </form>
       </div>
+      <ToastContainer />
     </section>
   );
 };
