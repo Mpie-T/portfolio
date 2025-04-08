@@ -39,7 +39,7 @@ const HeroSection = () => {
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
             I am eager to enhance my Front-End skills and learn new knowledge to
             support work effectively, increase productivity, and contribute
-            positively to the company's development.
+            positively to the company&apos;s development.
           </p>
           <div>
             <Link
