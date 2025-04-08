@@ -7,13 +7,32 @@ import { motion, useInView } from "framer-motion";
 const projectsData = [
   {
     id: 1,
-    title: "React Portfolio Website",
-    description: "Project 1 description",
-    image: "/images/projects/1.png",
+    title: "Demo_TypeScript",
+    description: "",
+    image: "/images/projects/3.png",
     tag: ["All", "Web"],
-    gitUrl: "/",
+    gitUrl: "https://demo-typescript-reacthook.vercel.app/",
     previewUrl: "/",
   },
+  {
+    id: 2,
+    title: "Group_Final_Project",
+    description: "",
+    image: "/images/projects/4.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://group-final-project.vercel.app/",
+    previewUrl: "/",
+  },
+  {
+    id: 3,
+    title: "Demo_ManagementPost",
+    description: "",
+    image: "/images/projects/5.png",
+    tag: ["All", "Mobile"],
+    gitUrl: "https://manager-post.vercel.app/",
+    previewUrl: "/",
+  },
+  
 ];
 
 const ProjectsSection = () => {

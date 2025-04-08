@@ -7,12 +7,49 @@ const TAB_DATA = [
     title: "Skills",
     id: "skills",
     content: (
-      <ul className="list-disc pl-2">
-        <li>React.js, Bootstrap, Tailwind CSS</li>
-        <li>Node.js, Spring Boot</li>
-        <li>SQL Server, MySQL</li>
-        <li>HTML/CSS, JavaScript</li>
-        <li>Git, Visual Studio Code</li>
+      <ul className="grid grid-cols-3 gap-8">
+        <li className="flex justify-center items-center hover:scale-105 transition-transform duration-300">
+          <img
+            src="/reactts-svgrepo-com.svg"
+            alt="React.js"
+            className="w-20 h-20"
+          />
+        </li>
+        <li className="flex justify-center items-center hover:scale-105 transition-transform duration-300">
+          <img
+            src="/bootstrap-svgrepo-com.svg"
+            alt="Bootstrap"
+            className="w-20 h-20"
+          />
+        </li>
+        <li className="flex justify-center items-center hover:scale-105 transition-transform duration-300">
+          <img
+            src="/tailwindcss-icon-svgrepo-com.svg"
+            alt="Tailwind CSS"
+            className="w-20 h-20"
+          />
+        </li>
+        <li className="flex justify-center items-center hover:scale-105 transition-transform duration-300">
+          <img
+            src="/node-js-svgrepo-com.svg"
+            alt="Node.js"
+            className="w-20 h-20"
+          />
+        </li>
+        <li className="flex justify-center items-center hover:scale-105 transition-transform duration-300">
+          <img
+            src="/html-5-svgrepo-com.svg"
+            alt="HTML/CSS"
+            className="w-20 h-20"
+          />
+        </li>
+        <li className="flex justify-center items-center hover:scale-105 transition-transform duration-300">
+          <img
+            src="/javascript-svgrepo-com.svg"
+            alt="JavaScript"
+            className="w-20 h-20"
+          />
+        </li>
       </ul>
     ),
   },
@@ -20,9 +57,19 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-2">
-        <li>FPT University (2021 - 2025)</li>
-        <li>GPA: 7.355</li>
+      <ul className="grid grid-cols-2 gap-8">
+        <li className="flex justify-center items-center bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+          <div className="text-center">
+            <p className="text-lg font-semibold">FPT University</p>
+            <p className="text-sm text-[#E0E7EB]">(2021 - 2025)</p>
+          </div>
+        </li>
+        <li className="flex justify-center items-center bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-lg p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+          <div className="text-center">
+            <p className="text-lg font-semibold">GPA</p>
+            <p className="text-sm text-[#E0E7EB]">7.355</p>
+          </div>
+        </li>
       </ul>
     ),
   },
@@ -30,9 +77,19 @@ const TAB_DATA = [
     title: "Certifications",
     id: "certifications",
     content: (
-      <ul className="list-disc pl-2">
-        <li>TRANS 6 English Certificate</li>
-        <li>Certificate of Completion from Course</li>
+      <ul className="grid grid-cols-2 gap-8">
+        <li className="flex justify-center items-center bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-lg p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+          <div className="text-center">
+            <p className="text-lg font-semibold">TRANS 6</p>
+            <p className="text-sm text-[#E0E7EB]">English Certificate</p>
+          </div>
+        </li>
+        <li className="flex justify-center items-center bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-lg p-6 shadow-lg hover:scale-105 transition-transform duration-300">
+          <div className="text-center">
+            <p className="text-lg font-semibold">Completion</p>
+            <p className="text-sm text-[#E0E7EB]">Certificate from Course</p>
+          </div>
+        </li>
       </ul>
     ),
   },
