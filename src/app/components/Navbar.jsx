@@ -30,7 +30,7 @@ const Navbar = () => {
           href={"/"}
           className="text-2xl md:text-5xl text-white font-semibold"
         >
-          <span className="text-[#FF6B00]">Thánh Phá Hoại</span>
+          <span className="text-[#ffffff]">Mpie-T</span>
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (

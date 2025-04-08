@@ -10,12 +10,9 @@ const EmailSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
+    const form = e.target;
+    const formData = new FormData(form);
+    const JSONdata = JSON.stringify(Object.fromEntries(formData));
     const endpoint = "/api/send";
 
     // Form the request for sending data to the server.
@@ -46,28 +43,23 @@ const EmailSection = () => {
     >
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
-        </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
+        <h5 className="text-2xl font-bold text-white my-4">Contact Me</h5>
+        <p className="text-[#ADB7BE] mb-6 max-w-md">
+          I am always open to new opportunities. If you have any questions or
+          want to discuss, feel free to contact me via email or the social
+          platforms below.
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="github.com">
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
-          <Link href="linkedin.com">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+        <div className="socials flex flex-row gap-4">
+          <Link href="https://https://github.com/Mpie-T.com">Github</Link>
+          <Link href="https://www.linkedin.com/in/thong-tase-7a4b10347/">
+            LinkedIn
           </Link>
         </div>
       </div>
       <div>
         {emailSubmitted ? (
           <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
+            Your email has been successfully sent!
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
@@ -76,7 +68,7 @@ const EmailSection = () => {
                 htmlFor="email"
                 className="text-white block mb-2 text-sm font-medium"
               >
-                Your email
+                Your Email
               </label>
               <input
                 name="email"
@@ -84,7 +76,7 @@ const EmailSection = () => {
                 id="email"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="jacob@google.com"
+                placeholder="example@gmail.com"
               />
             </div>
             <div className="mb-6">
@@ -100,7 +92,7 @@ const EmailSection = () => {
                 id="subject"
                 required
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
+                placeholder="Example: Project Collaboration"
               />
             </div>
             <div className="mb-6">
@@ -114,7 +106,7 @@ const EmailSection = () => {
                 name="message"
                 id="message"
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
+                placeholder="Leave your message here..."
               />
             </div>
             <button
